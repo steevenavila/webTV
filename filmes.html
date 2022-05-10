@@ -5,10 +5,44 @@
     <link rel="icon" href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png" type="image/x-icon">
   </head>
   <body style="background-color:#0d0d0d">
-    <p align="center">
-      <a href="https://hdfog.club/video/player.php?id=tt0067065">a fuga do planeta dos macacos</a><br>
-      <a href="https://hdfog.club/video/player.php?id=tt0068408">a conquista do planeta dos macacos</a><br>
-      <a href="https://player.netcinehd.com/v/MW2SED9XKQrk0xY">a batalha do planeta dos macacos</a><br>
-    </p>
+    <div id='display' align='center'></div>
   </body>
 </html>
+<script>
+  var divDisplay = document.getElementById('display')
+  var o2202 = {
+    titulo: "O fim da beleza",
+    imagem: "https://assets-global.website-files.com/60ff690cd7b0537edb99a29a/621f98eb41b20d4db6839fbf_Poster%20o%20fim%20da%20beleza.jpg",
+    video: "https://www.youtube.com/embed/videoseries?list=PL3yv1E7IiXyRA-5EXNUNIAIhVqJFhOMLZ"
+  }
+  var o2110 = {
+    titulo: "A sétima arte",
+    imagem: "https://assets-global.website-files.com/60ff690cd7b0537edb99a29a/617c7578f744d59a4868a845_poster%20a%20s%C3%A9tima%20arte%20com%20cl%C3%A1ssicos%20do%20cinema.jpg",
+    video: "https://www.youtube.com/embed/videoseries?list=PL3yv1E7IiXyR7_nH_0WCN5RQ6p-ryqkQC"
+  }
+  var o2104 = {
+    titulo: "A primeira arte",
+    imagem: "https://assets-global.website-files.com/60ff690cd7b0537edb99a29a/614de52cc395b8c662a699a3_9fe8fcc0-9d6b-11eb-a0a4-f15543be37e4.png",
+    video: "https://www.youtube.com/embed/videoseries?list=PL3yv1E7IiXyTWjQqjR2SRkiU3OnhHl_7l"
+  }
+  var m1201 = {
+    titulo: "Sr. Ninguém (Mr. Nobody)",
+    imagem: "https://www.reliquiasemdvd.com.br/product_images/n/721/0wedjoa60eua__47916_tiny.jpg",
+    video: "https://player.vimeo.com/video/290909980?h=dd04440b8c"
+  }
+  var filmes = []
+      filmes.push(o2104)
+      filmes.push(o2110)
+      filmes.push(o2202)
+      filmes.push(m1201)
+  listaFilmes()
+
+  function listaFilmes() {
+    var html = ''
+    for (var i = 0; i < filmes.length; i++){
+      html += '<a href="' + filmes[i].video + '"><img title="' + filmes[i].titulo + '" src="' + filmes[i].imagem + '" width="96" height="138"></a>  '
+      console.log (filmes[i].titulo)
+    }
+    divDisplay.innerHTML = html
+  }
+</script>
