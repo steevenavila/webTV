@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Músicas</title>
+    <base target="video">
+    <link rel="icon" href="https://icons.iconarchive.com/icons/robsonbillponte/sinem/24/File-Music-icon.png" type="image/x-icon">
+  </head>
+  <body style="background-color:black">
+    <div id='display' align='center'></div>
+  </body>
+</html>
+
+<script>
+  var divDisplay = document.getElementById('display')
+  var delicate = {
+    titulo: "Delicate sound of thunder",
+    imagem: "https://www.pinkfloyd.com/music/images/discography/album_delicate_front.jpg",
+    video: "https://www.youtube.com/embed/videoseries?list=OLAK5uy_mmysoUmDfXVOaX8VNtQL7KB2-riVhYM30"
+  }
+  var pulse = {
+    titulo: "Pulse",
+    imagem: "https://www.pinkfloyd.com/music/images/discography/album_pulse_front.jpg",
+    video: "https://www.youtube.com/embed/videoseries?list=OLAK5uy_mfd3JEJBQGV3WuM7G-wrgzcNJxxZ0PcZo"
+  }
+ 
+  var filmes = []
+      filmes.push(delicate)
+      filmes.push(pulse)
+  listaFilmes()
+
+  function listaFilmes() {
+    var html = ''
+    for (var i = 0; i < filmes.length; i++){
+      html += '<a href="' + filmes[i].video + '"><img title="' + filmes[i].titulo + '" src="' + filmes[i].imagem + '" width="96" height="96"></a>  '
+      console.log (filmes[i].titulo)
+    }
+    divDisplay.innerHTML = html
+  }
+</script>
