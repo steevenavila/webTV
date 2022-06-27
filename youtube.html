@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <title>youTube</title>
+    <base target="video">
+    <link rel="icon" href="https://icons.iconarchive.com/icons/robsonbillponte/sinem/24/File-Movies-icon.png" type="image/x-icon">
+  </head>
+  <body style="background-color:black">
+    <div id='display' align='center'></div>
+  </body>
+</html>
+
+<script>
+  var divDisplay = document.getElementById('display')
+  var brasilParalelo = {
+    titulo: "originaisBrasilParalelo",
+    imagem: "https://yt3.ggpht.com/l89nOUZ6sATDb_XKIxFION2n5tUdkaPocxks-xFg0UWunIuEvfqfjdwi1zlVbmLmyEhhBrLx=s48-c-k-c0x00ffffff-no-rj",
+    video: "./brasilparalelo.html"
+  }
+  var netMovies = {
+    titulo: "netMovies",
+    imagem: "https://yt3.ggpht.com/ytc/AKedOLTNGnDlyJ7mZQ2AHWYLNmb3hXRT_YriLeBIWMe96A=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=PLhQTgJ8wVv-nSjTi5jGdTyT_buM23l12o"
+  }
+  var despertar = {
+    titulo: "despertar",
+    imagem: "https://yt3.ggpht.com/ytc/AKedOLTq1EDbCP3jKVm6O_iN9TnNQ70E1GeyM0J628SZ=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=PLByQ1zrrdjY_yx5imZq9u1Q5rYEDzdYk7"
+  }
+  var cineClassico = {
+    titulo: "cineClássico",
+    imagem: "https://yt3.ggpht.com/e0nTVFqGa9UzKQw5mOzIKLajiBgwslJQOsn-UzOzdjzQq5wuCjDt-Kuq_hwPOCUBst-z7HJ1ugg=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=PL5aA8GepkB-ENIbLxBqU9q4B-91DS0iIR"
+  }
+  var videoFlix = {
+    titulo: "videoFlix",
+    imagem: "https://yt3.ggpht.com/AUk0DOJA1aWbZUyAPwbQqPXMOVzfHLwFV5ogWdmYApEwrVdBp--4XxZSnJumBn3JVmyZKvAvWg=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=PLu8VXQ-PWl_UfLI0QPpwx6lnySfmbOFl9"
+  }
+  var altaTensao = {
+    titulo: "altaTensão",
+    imagem: "https://yt3.ggpht.com/ytc/AKedOLRukjp-ksXo8IaP7lnCFK09aQ6UzMKkAFb9hSKsRQ=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=UU8L4Qu7R0S1MHpVWjO6xx9A"
+  }
+  var telaNacional = {
+    titulo: "telaNacional",
+    imagem: "https://yt3.ggpht.com/ytc/AKedOLT_oxHiJR8GH1dQ66xV5dF0lEvwo4kYZpEdedW3qA=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=PLaA77Oh19fVrLRC8Pmtln-53ecGVHPl7v"
+  }
+  var bangBang = {
+    titulo: "bangBang",
+    imagem: "https://yt3.ggpht.com/tTSKJO8mxfvWyb6SsUz-oLDubnoRbH0y1B9oiQuEeX4eHXSIHKTDEXQCLKecuaSwBTzdWjir=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=PLuF5e33Foj95WfZ9SutJ8nxWeqUDRVlnk"
+  }
+  var booh = {
+    titulo: "booh!",
+    imagem: "https://yt3.ggpht.com/ytc/AKedOLSkPrE71wUVzBtp9_FLVpR8uQRrCqXM7UMTs4E8KQ=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=PLvi6CuFU-yPO05bsP0ZJPwtD6Ula3COQE"
+  }
+  var trasheira = {
+    titulo: "trasheira",
+    imagem: "https://yt3.ggpht.com/ZA-VEiCT4uYvHR948uRw4w7nEWyzXPSSM_lvawwCLoXXc6mY-iASrpOp2q6aRyz45wMQ3ddN=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=UU2GYwZtDKt05K13p7ZN8kMg"
+  }
+  var filmPlus = {
+    titulo: "filmPlus",
+    imagem: "https://yt3.ggpht.com/Ke7KG4wgL0D1uYxiMZ-qXEaaCZJLC-hBAigcDhiv6GuV2BmjKIIulrvP2c-83cw791Sa6bN-E6o=s48-c-k-c0x00ffffff-no-rj",
+    video: "https://www.youtube.com/embed/videoseries?list=UUXi7MtdQ4JeEQN9CQ-w9syA"
+  }
+  var filmes = []
+      filmes.push(brasilParalelo)
+      filmes.push(netMovies)
+      filmes.push(despertar)
+      filmes.push(cineClassico)
+      filmes.push(videoFlix)
+      filmes.push(altaTensao)
+      filmes.push(telaNacional)
+      filmes.push(bangBang)
+      filmes.push(booh)
+      filmes.push(trasheira)
+      filmes.push(filmPlus)
+  listaFilmes()
+
+  function listaFilmes() {
+    var html = ''
+    for (var i = 0; i < filmes.length; i++){
+      html += '<a href="' + filmes[i].video + '"><img title="' + filmes[i].titulo + '" src="' + filmes[i].imagem + '" width="88" height="88"></a>  '
+      console.log (filmes[i].titulo)
+    }
+    divDisplay.innerHTML = html
+  }
+</script>
