@@ -1,0 +1,17 @@
+<head>
+  <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/7.15.4/video.js"></script>
+</head>
+
+<body>
+  <p align="center">
+    <video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="960" height="540" autoplay>
+      <source src="https://tv02.zas.media:1936/centraltv/centraltv/playlist.m3u8" type="application/x-mpegURL">
+    </video>
+  </p>
+</body>
+
+<script>
+  var player = videojs('my-video');
+  player.play();
+</script>
