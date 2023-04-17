@@ -1,0 +1,20 @@
+<head>
+  <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+  <script src="https://vjs.zencdn.net/7.15.4/video.js"></script>
+</head>
+
+<body>
+  <p align="center">
+    <video id="video" class="video-js vjs-default-skin" controls preload="auto" width="960" height="540" autoplay muted>
+      <source src="blob:https://jovempan.com.br/04e7e178-1e53-417d-a43d-bbda38733063" type="video/mp4">
+    </video>
+  </p>
+</body>
+
+<script>
+  var url = new URL(window.location.href);
+  var videoUrl = url.searchParams.get('play');
+  var player = videojs('video');
+  player.src(videoUrl);
+  player.play();
+</script>
