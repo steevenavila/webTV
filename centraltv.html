@@ -12,6 +12,9 @@
 </body>
 
 <script>
+  var url = new URL(window.location.href);
+  var videoUrl = url.searchParams.get('play');
   var player = videojs('video');
+  player.src(videoUrl);
   player.play();
 </script>
