@@ -3,8 +3,10 @@
     <title>Filmes</title>
     <base target="video">
     <link rel="icon" href="https://icons.iconarchive.com/icons/robsonbillponte/sinem/24/File-Movies-icon.png" type="image/x-icon">
+    <style type="text/css">img {border-radius: 24px;}</style>
   </head>
   <body style="background-color:black">
+    <br><br>
     <div id='display' align='center'></div>
   </body>
 </html>
@@ -86,6 +88,11 @@
     imagem: "https://www.reliquiasemdvd.com.br/product_images/n/721/0wedjoa60eua__47916_tiny.jpg",
     video: "https://player.vimeo.com/video/290909980?h=dd04440b8c"
   }
+  var teatrodastesouras = {
+    titulo: "Teatro das Tesouras",
+    imagem: "https://m.media-amazon.com/images/M/MV5BMDhiYWFjMTUtYWJmMy00MDA5LTg4YWQtZmE1NjI4MjY0ODBhXkEyXkFqcGdeQXVyMTc0MTEzMzM@._V1_FMjpg_UY1692_.jpg",
+    video: "https://www.youtube.com/embed/videoseries?list=PL3yv1E7IiXySXVtQEJyqHGNnn_9m7XkEq"
+  }
   var filmes = []
       filmes.push(ofimdabeleza)
       filmes.push(asetimaarte)
@@ -94,14 +101,15 @@
       filmes.push(aquedaargentina)
       filmes.push(asgrandesminorias)
       filmes.push(fimdasnacoes)
-      filmes.push(_1964)
+    //filmes.push(_1964)
       filmes.push(congressobrasilparalelo)
-      filmes.push(donosdaverdade)
+    //filmes.push(donosdaverdade)
       filmes.push(patriaeducadora)
-      filmes.push(_7denuncias)
+    //filmes.push(_7denuncias)
       filmes.push(odiadepoisdaeleicao)
       filmes.push(aultimacruzada)
-      filmes.push(srninguem)
+      filmes.push(teatrodastesouras)
+    //filmes.push(srninguem)
   listaFilmes()
 
   function listaFilmes() {
