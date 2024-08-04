@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>brasilsat</title>
+    <base target="video">
+    <link rel="icon" type="image/x-icon"
+          href="https://vizer.tv/img/apple-touch-icon-57x57.png">
+    <style type="text/css">
+      img {border-radius: 24px;}
+  	</style>
+  </head>
+  <body style="background-color:black">
+    <div id="rooftop" align="right">
+      <a href="https://vizer.tv/" target="_top">
+        <img title="vizerTV" width="57" height="57"
+             src="https://vizer.tv/img/apple-touch-icon-57x57.png"></a>
+    </div>
+    <div id="brasilsat" align="center">
+      <a href="https://embedmax.site/tvl/globoSP.php">
+        <img title="globo"
+             src="https://portalbsd.com.br/images/tv/globo.png"></a>
+      <a href="https://embedmax.site/tvl/sbt.php">
+        <img title="sbt"
+             src="https://portalbsd.com.br/images/tv/sbt.jpg"></a>
+      <a href="https://embedmax.site/tvl/recordSP.php">
+        <img title="record"
+             src="https://portalbsd.com.br/images/tv/record.png"></a>
+      <a href="https://embedmax.site/tvl/band.php">
+        <img title="band"
+             src="https://portalbsd.com.br/images/tv/band.png"></a>
+      <a href="https://embedmax.site/tvl/tvbrasil.php">
+        <img title="tvbrasil"
+             src="https://portalbsd.com.br/images/tv/tv_brasil.png"></a>
+    </div>
+    <div id="globosat" align="center">
+      <a href="https://embedmax.site/tvl/tcpremium.php">
+        <img title="telecine"
+             src="https://portalbsd.com.br/images/tv/telecine.png"></a>
+      <a href="https://embedmax.site/tvl/sportv1.php">
+        <img title="sportv"
+             src="https://portalbsd.com.br/images/tv/sportv.jpg"></a>
+      <a href="https://embedmax.site/tvl/gnt.php">
+        <img title="gnt"
+             src="https://portalbsd.com.br/images/tv/gnt_1.jpg"></a>
+      <a href="https://embedmax.site/tvl/multishow.php">
+        <img title="multishow"
+             src="https://portalbsd.com.br/images/tv/multshow.jpg"></a>
+    </div>
+    <div id="tva_digitasat" align="center">
+      <a href="https://embedmax.site/tvl/hbo.php">
+        <img title="hbo"
+             src="https://portalbsd.com.br/images/tv/hbo_brasil.jpg"></a>
+      <a href="https://embedmax.site/tvl/espn1.php">
+        <img title="espn"
+             src="https://portalbsd.com.br/images/tv/rspn.jpg"></a>
+      <a href="https://embedmax.site/tvl/cnnbrasil.php">
+        <img title="cnn"
+             src="https://portalbsd.com.br/images/tv/cnn.gif"></a>
+      <a href="https://embedmax.site/tvl/tnt.php">
+        <img title="tnt"
+             src="https://portalbsd.com.br/images/tv/tnt_1.gif"></a>
+      <a href="https://embedmax.site/tvl/mtvlive.php">
+        <img title="mtv"
+             src="https://portalbsd.com.br/images/tv/mtv_live_hd.jpg"></a>
+    </div>
+  </body>
+</html>
