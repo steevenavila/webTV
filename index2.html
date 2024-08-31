@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player com Vários Canais</title>
+
+  <!-- Link para o CSS do Video.js -->
+  <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
+  
+  <!-- Script do Video.js -->
+  <script src="https://vjs.zencdn.net/7.21.1/video.min.js"></script>
+  
+  <!-- Script para suporte a HLS no Video.js -->
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.js"></script>
+
+  <style>
+    /* Define que o corpo da página e o html ocupem toda a janela */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Esconde as barras de rolagem */
+    }
+
+    /* Faz com que o vídeo ocupe 100% da altura e largura da janela */
+    #my-video {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Estilo para os botões de alternância de canais */
+    .channel-buttons {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .channel-buttons button {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .channel-buttons button:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Player de vídeo -->
+  <video
+    id="my-video"
+    class="video-js vjs-default-skin"
+    controls
+    preload="auto"
+    muted
+    data-setup='{}'>
+    Seu navegador não suporta a reprodução desse vídeo.
+  </video>
+
+  <!-- Botões para alternar entre os canais -->
+  <div class="channel-buttons">
+    <button id="canal1Btn">Canal 1 (TV Pampa)</button>
+    <button id="canal2Btn">Canal 2 (YouTube)</button>
+    <button id="canal3Btn">Canal 3 (TVE)</button>
+    <button id="canal4Btn">Canal 4 (Dailymotion)</button>
+  </div>
+
+  <script>
+    var player = videojs('my-video');
+
+    // Canais
+    var canais = {
+      1: {
+        src: 'https://59f1cbe63db89.streamlock.net:1443/tvpampa/_definst_/tvpampa/playlist.m3u8',
+        type: 'application/x-mpegURL'
+      },
+      2: {
+        src: 'https://www.youtube.com/embed/ABVQXgr2LW4',
+        type: 'iframe'
+      },
+      3: {
+        src: 'https://streaming.procergs.com.br:8443/tve/stve/playlist.m3u8',
+        type: 'application/x-mpegURL'
+      },
+      4: {
+        src: 'https://geo.dailymotion.com/player/x9fev.html?video=k6KRDW5M0jOZO7xaX2y',
+        type: 'iframe'
+      }
+    };
+
+    // Função para trocar o canal
+    function changeChannel(canal) {
+      var channel = canais[canal];
+
+      if (channel.type === 'iframe') {
+        // Se for um iFrame (YouTube ou Dailymotion), destrói o player de video.js e substitui por iFrame
+        player.pause();
+        player.dispose();
+
+        var iframe = document.createElement('iframe');
+        iframe.src = channel.src;
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.allowFullscreen = true;
+        iframe.frameBorder = '0';
+
+        var videoContainer = document.getElementById('my-video');
+        videoContainer.parentNode.replaceChild(iframe, videoContainer);
+      } else {
+        // Se for HLS, reinicializa o player com o novo source
+        if (!document.getElementById('my-video')) {
+          var newVideoTag = document.createElement('video');
+          newVideoTag.id = 'my-video';
+          newVideoTag.classList.add('video-js', 'vjs-default-skin');
+          newVideoTag.setAttribute('controls', '');
+          newVideoTag.setAttribute('preload', 'auto');
+          newVideoTag.setAttribute('width', '100%');
+          newVideoTag.setAttribute('height', '100%');
+
+          document.body.appendChild(newVideoTag);
+          player = videojs('my-video');
+        }
+        
+        player.src({ src: channel.src, type: channel.type });
+        player.play();
+      }
+    }
+
+    // Botões para alternar entre os canais
+    document.getElementById('canal1Btn').addEventListener('click', function() {
+      changeChannel(1);
+    });
+
+    document.getElementById('canal2Btn').addEventListener('click', function() {
+      changeChannel(2);
+    });
+
+    document.getElementById('canal3Btn').addEventListener('click', function() {
+      changeChannel(3);
+    });
+
+    document.getElementById('canal4Btn').addEventListener('click', function() {
+      changeChannel(4);
+    });
+  </script>
+</body>
+</html>
