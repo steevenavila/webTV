@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>playTV</title>
+
+  <!-- Link para o CSS do Video.js -->
+  <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
+
+  <!-- Script do Video.js -->
+  <script src="https://vjs.zencdn.net/7.21.1/video.min.js"></script>
+
+  <!-- Script para suporte a HLS no Video.js -->
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.js"></script>
+
+  <style>
+    /* Define que o corpo da página e o html ocupem toda a janela */
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Esconde as barras de rolagem */
+    }
+
+    /* Faz com que o vídeo ocupe 100% da altura e largura da janela */
+    #my-video {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Player de vídeo -->
+  <video
+    id="my-video"
+    class="video-js vjs-default-skin"
+    controls
+    preload="auto"
+    muted
+    data-setup='{}'>
+    Seu navegador não suporta a reprodução desse vídeo.
+  </video>
+
+  <script>
+    var player = videojs('my-video');
+
+    // Canais
+    var canais = {
+      1: {
+        src: 'https://59f1cbe63db89.streamlock.net:1443/tvpampa/_definst_/tvpampa/playlist.m3u8',
+        type: 'application/x-mpegURL'
+      },
+      2: {
+        src: 'https://streaming.procergs.com.br:8443/tve/stve/playlist.m3u8',
+        type: 'application/x-mpegURL'
+      },
+      3: {
+        src: 'https://player-tvcultura.stream.uol.com.br/live/tvcultura.m3u8',
+        type: 'application/x-mpegURL'
+      },
+      4: {
+        src: 'https://tvbrasil-stream.ebc.com.br/index.m3u8',
+        type: 'application/x-mpegURL'
+      }
+    };
+
+    // Função para pegar o parâmetro 'canal' da URL
+    function getCanalFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get('canal');
+    }
+
+    // Função para trocar o canal com base na URL
+    function changeChannel(canal) {
+      var channel = canais[canal];
+      if (channel) {
+        player.src({ src: channel.src, type: channel.type });
+        player.play();
+      } else {
+        console.error('Canal não encontrado: ', canal);
+      }
+    }
+
+    // Verifica o canal na URL e troca para o canal certo
+    var canalInicial = getCanalFromUrl() || 1; // Se não houver parâmetro, carrega o canal 1 por padrão
+    changeChannel(canalInicial);
+
+  </script>
+
+</body>
+</html>
