@@ -64,11 +64,11 @@
         src: 'https://tvbrasil-stream.ebc.com.br/index.m3u8',
         type: 'application/x-mpegURL'
       },
-      5: {
+      central: {
         src: 'https://ott01.al.rs.gov.br/meevaor/service3/index.m3u8',
         type: 'application/x-mpegURL'
       },
-      6: {
+      rmc: {
         src: 'https://tv02.zas.media:1936/centraltvweb/centraltvweb/playlist.m3u8',
         type: 'application/x-mpegURL'
       },
@@ -76,7 +76,8 @@
         src: 'https://tv01.zas.media:1936/centraltvweb/centraltvweb/playlist.m3u8',
         type: 'application/x-mpegURL'
       }
-
+    };
+    
     // Função para pegar o parâmetro 'canal' da URL
     function getCanalFromUrl() {
       const urlParams = new URLSearchParams(window.location.search);
