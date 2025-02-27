@@ -9,6 +9,20 @@
       img {border-radius: 12px; width: 24px; height: 24px;}
       frame {width: 960px; height: 540px;}
     </style>
+    <script>
+      function adjustIframeSize() {
+        let iframe = document.getElementsByName("video")[0];
+        if (window.innerHeight < 800) {
+          iframe.width = "960";
+          iframe.height = "540";
+        } else {
+          iframe.width = "1280";
+          iframe.height = "720";
+        }
+      }
+      window.addEventListener("load", adjustIframeSize);
+      window.addEventListener("resize", adjustIframeSize);
+    </script>
   </head>
     <p id="screen" align="center">
       <iframe name="video" src="https://www.youtube.com/embed/videoseries?list=PLGBzpR4f59ZTMQ4SscDH32JrJBLojjPjc&autoplay=1"
