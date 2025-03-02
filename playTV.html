@@ -5,34 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>playTV</title>
 
-  <!-- Link para o CSS do Video.js -->
   <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
-
-  <!-- Script do Video.js -->
   <script src="https://vjs.zencdn.net/7.21.1/video.min.js"></script>
-
-  <!-- Script para suporte a HLS no Video.js -->
   <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.js"></script>
 
   <style>
-    /* Define que o corpo da página e o html ocupem toda a janela */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden; /* Esconde as barras de rolagem */
+      overflow: hidden;
     }
-
-    /* Faz com que o vídeo ocupe 100% da altura e largura da janela */
     #my-video {
       width: 100vw;
       height: 100vh;
     }
   </style>
 </head>
-<body>
 
-  <!-- Player de vídeo -->
+<body>
   <video
     id="my-video"
     class="video-js vjs-default-skin"
@@ -46,7 +37,6 @@
   <script>
     var player = videojs('my-video');
 
-    // Canais
     var canais = {
       1: {
         src: 'https://59f1cbe63db89.streamlock.net:1443/tvpampa/_definst_/tvpampa/playlist.m3u8',
@@ -68,7 +58,6 @@
         src: 'https://ott01.al.rs.gov.br/meevaor/service3/index.m3u8',
         type: 'application/x-mpegURL'
       },
-
       pampa: {
         src: 'https://video04.logicahost.com.br/tvpampa/tvpampa/playlist.m3u8',
         type: 'application/x-mpegURL'
@@ -85,12 +74,12 @@
         src: 'https://tvbrasil-stream.ebc.com.br/index.m3u8',
         type: 'application/x-mpegURL'
       },
-      central: {
-        src: 'https://tv01.zas.media:1936/centraltvweb/centraltvweb/playlist.m3u8',
+      altv: {
+        src: 'https://ott01.al.rs.gov.br/meevaor/service3/index.m3u8',
         type: 'application/x-mpegURL'
       },
-      rmc: {
-        src: 'https://tv02.zas.media:1936/centraltvweb/centraltvweb/playlist.m3u8',
+      central: {
+        src: 'https://tv01.zas.media:1936/centraltvweb/centraltvweb/playlist.m3u8',
         type: 'application/x-mpegURL'
       },
       retro: {
@@ -105,15 +94,21 @@
         src: 'https://tv03.zas.media:1936/rftv/rftv/playlist.m3u8',
         type: 'application/x-mpegURL'
       },
+      times: {
+        src: 'https://video01.soultv.com.br/timesbrasil/timesbrasil/playlist.m3u8',
+        type: 'application/x-mpegURL'
+      },
+      uol: {
+        src: 'https://video01.soultv.com.br/uoltv/uoltv/playlist.m3u8',
+        type: 'application/x-mpegURL'
+      },
     };
     
-    // Função para pegar o parâmetro 'canal' da URL
     function getCanalFromUrl() {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get('canal');
     }
 
-    // Função para trocar o canal com base na URL
     function changeChannel(canal) {
       var channel = canais[canal];
       if (channel) {
@@ -124,10 +119,8 @@
       }
     }
 
-    // Verifica o canal na URL e troca para o canal certo
-    var canalInicial = getCanalFromUrl() || 1; // Se não houver parâmetro, carrega o canal 1 por padrão
+    var canalInicial = getCanalFromUrl() || 1;
     changeChannel(canalInicial);
-
   </script>
 </body>
 </html>
