@@ -11,7 +11,7 @@
     <script>
       function adjustIframeSize() {
         let iframe = document.getElementsByName("video")[0];
-        if (window.innerHeight < 800) {
+        if (window.innerHeight < 768) {  //original 800
           iframe.width = "960";
           iframe.height = "540";
         } else {
