@@ -5,8 +5,21 @@
     <link rel="icon" type="image/x-icon"
           href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png" >
     <style type="text/css">
-      body {background-color: #0d0d0d;}
-      img {border-radius: 12px; width: 24px; height: 24px;}
+      body {
+        background-color: #0d0d0d;
+      }
+      img {
+        border-radius: 12px;
+        width: 24px;
+        height: 24px;
+      }
+      html, body {
+        -ms-overflow-style: none;  /* Oculta barras no Edge e IE */
+        scrollbar-width: none; /* Oculta barras no Firefox */
+      }
+      html::-webkit-scrollbar, body::-webkit-scrollbar {
+        display: none; /* Oculta barras no Chrome e Safari */
+      }
     </style>
     <script>
       function adjustIframeSize() {
