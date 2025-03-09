@@ -8,6 +8,13 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
+  overflow: hidden; /* Oculta barras de rolagem */
+  -ms-overflow-style: none;  /* Oculta barras no Edge, IE */
+  scrollbar-width: none; /* Oculta barras no Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Oculta barras no Chrome, Safari */
 }
 
 /* Centralização do iframe */
@@ -34,12 +41,14 @@ iframe {
   margin-top: 16px;
   width: 100%;
   max-width: 1280px; /* Limite de largura */
+  position: absolute;
+  bottom: 0; /* Console vai ficar no fundo da tela */
 }
 
 /* Ajuste da largura dos ícones */
 .console img {
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
@@ -56,11 +65,12 @@ iframe {
   }
 
   .console img {
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
   }
 }
 
+/* Ajuste para telas maiores */
 @media (min-width: 1280px) and (max-width: 1920px) {
   iframe {
     width: 1280px;
