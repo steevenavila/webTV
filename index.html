@@ -4,62 +4,18 @@
     <base target="video">
     <link rel="icon" type="image/x-icon"
           href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png" >
+
     <style type="text/css">
-
-      /* Fundo da página */
-body {
-  background-color: #0d0d0d;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Oculta barras de rolagem */
-  -ms-overflow-style: none;  /* Para Edge e IE */
-  scrollbar-width: none; /* Para Firefox */
-}
-
-/* Oculta barras no Chrome e Safari */
-body::-webkit-scrollbar {
-  display: none;
-}
-
-/* Centraliza o iframe */
-#screen {
-  display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Opcional: pode ajudar no alinhamento vertical */
-  margin-top: 20px; /* Mantém uma margem no topo */
-}
-
-/* Ajusta os ícones dos canais */
-img {
-  border-radius: 12px;
-  width: 24px;
-  height: 24px;
-  object-fit: cover; /* Garante que a imagem sempre se encaixe corretamente */
-}
-
-/* Estiliza o console de canais para flutuar */
-#control {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px;
-  border-radius: 12px;
-  transition: opacity 0.3s;
-}
-
-/* Oculta o console e exibe ao passar o mouse */
-#control {
-  opacity: 0;
-}
-
-body:hover #control {
-  opacity: 1;
-}
-
- 
+      body {
+          background-color: #0d0d0d;
+      }
+      img {
+          border-radius: 12px;
+          width: 24px;
+          height: 24px;
+      }
     </style>
+
     <script>
       function adjustIframeSize() {
         let iframe = document.getElementsByName("video")[0];
@@ -74,6 +30,7 @@ body:hover #control {
       window.addEventListener("resize", adjustIframeSize);
     </script>
   </head>
+
   <body>
     <p id="screen" align="center">
       <iframe name="video" src="https://www.youtube.com/embed/videoseries?list=PLGBzpR4f59ZTMQ4SscDH32JrJBLojjPjc&autoplay=1"
