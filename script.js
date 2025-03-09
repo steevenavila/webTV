@@ -1,13 +1,11 @@
 function adjustIframeSize() {
   let iframe = document.querySelector('iframe');
-  const screenWidth = window.innerWidth; // Largura da janela
-  const screenHeight = window.innerHeight; // Altura da janela do navegador
 
   // Ajuste de tamanho do iframe conforme a altura da janela do navegador
-  if (screenHeight >= 1080) {
+  if (window.innerHeight >= 1080) {
     iframe.width = "1920";
     iframe.height = "1080";
-  } else if (screenHeight >= 720) {
+  } else if (window.innerHeight >= 720) {
     iframe.width = "1280";
     iframe.height = "720";
   } else {
@@ -19,7 +17,7 @@ function adjustIframeSize() {
   let console = document.querySelector('.console');
   const iframeHeight = iframe.offsetHeight;
 
-  if (screenHeight - iframeHeight < 150) { // Se o espaço restante for menor que 150px (console + espaçamento)
+  if (window.innerHeight - iframeHeight < 150) { // Se o espaço restante for menor que 150px (console + espaçamento)
     console.style.position = 'fixed';
     console.style.bottom = '0';
     console.style.width = '100%';
