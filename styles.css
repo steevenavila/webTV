@@ -41,10 +41,11 @@ iframe {
   margin-top: 16px;
   width: 100%;
   max-width: 1280px; /* Limite de largura */
-  position: fixed; /* Console fixo na parte inferior */
+  position: absolute;
   bottom: 0;
   left: 0;
   z-index: 10; /* Garante que o console fique acima do iframe */
+  transition: opacity 0.3s ease;
 }
 
 /* Ajuste da largura dos ícones */
