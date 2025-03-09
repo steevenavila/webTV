@@ -5,15 +5,14 @@
     <link rel="icon" type="image/x-icon"
           href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png" >
     <style type="text/css">
-
-      /* Fundo da página */
+/* Fundo da página */
 body {
   background-color: #0d0d0d;
   margin: 0;
   padding: 0;
   overflow: hidden; /* Oculta barras de rolagem */
-  -ms-overflow-style: none;  /* Para Edge e IE */
-  scrollbar-width: none; /* Para Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Oculta barras no Chrome e Safari */
@@ -24,54 +23,80 @@ body::-webkit-scrollbar {
 /* Centraliza o iframe */
 #screen {
   display: flex;
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Opcional: pode ajudar no alinhamento vertical */
+  justify-content: center;
   margin-top: 20px; /* Mantém uma margem no topo */
 }
 
-/* Ajusta os ícones dos canais */
+/* Ajusta os ícones */
 img {
   border-radius: 12px;
   width: 24px;
   height: 24px;
-  object-fit: cover; /* Garante que a imagem sempre se encaixe corretamente */
+  object-fit: cover;
 }
 
-/* Estiliza o console de canais para flutuar */
+/* Estiliza o console fixo (padrão) */
 #control {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
+  margin-top: 10px;
   background: rgba(0, 0, 0, 0.6);
   padding: 10px;
   border-radius: 12px;
   transition: opacity 0.3s;
 }
 
-/* Oculta o console e exibe ao passar o mouse */
-#control {
+/* Estiliza o console flutuante (quando ativado pelo JS) */
+.floating {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   opacity: 0;
 }
 
-body:hover #control {
+/* Mostra o console quando o mouse está sobre a tela */
+body:hover #control.floating {
   opacity: 1;
 }
 
- 
     </style>
     <script>
-      function adjustIframeSize() {
-        let iframe = document.getElementsByName("video")[0];
-        if (window.innerHeight < 768) {  //original 800
-          iframe.width = "960";
-          iframe.height = "540";
-        } else {
-          iframe.width = "1280";
-          iframe.height = "720";
-        } }
-      window.addEventListener("load", adjustIframeSize);
-      window.addEventListener("resize", adjustIframeSize);
+function adjustFrameSize() {
+  let iframe = document.getElementsByName("video")[0];
+  let screenWidth = window.innerWidth;
+  let screenHeight = window.innerHeight;
+
+  if (screenWidth >= 1920 && screenHeight >= 1080) {
+    iframe.width = "1920";
+    iframe.height = "1080";
+  } else if (screenWidth >= 1280 && screenHeight >= 800) {
+    iframe.width = "1280";
+    iframe.height = "720";
+  } else {
+    iframe.width = "960";
+    iframe.height = "540";
+  }
+
+  adjustConsolePosition(); // Garante que o console se adapte ao novo tamanho do iframe
+}
+
+  function adjustConsolePosition() {
+  let control = document.getElementById("control");
+  let screenHeight = window.innerHeight;
+  let iframeHeight = document.getElementsByName("video")[0].height;
+
+  // Se o iframe ocupar quase toda a tela, o console fica flutuante
+  if (iframeHeight + 80 > screenHeight) {
+    control.classList.add("floating");
+  } else {
+    control.classList.remove("floating");
+  }
+}
+
+// Aplica ao carregar e redimensionar a janela
+window.addEventListener("load", adjustConsolePosition);
+window.addEventListener("resize", adjustConsolePosition);
+
     </script>
   </head>
   <body>
