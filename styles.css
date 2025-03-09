@@ -8,7 +8,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   min-height: 100vh;
-  overflow: hidden; /* Oculta barras de rolagem */
+  overflow: hidden; /* Oculta barras de rolagem no body */
   -ms-overflow-style: none;  /* Oculta barras no Edge, IE */
   scrollbar-width: none; /* Oculta barras no Firefox */
 }
@@ -43,6 +43,7 @@ iframe {
   max-width: 1280px; /* Limite de largura */
   position: absolute;
   bottom: 0; /* Console vai ficar no fundo da tela */
+  z-index: 10; /* Garante que o console fique acima do iframe */
 }
 
 /* Ajuste da largura dos ícones */
