@@ -3,11 +3,11 @@ function adjustIframeSize() {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
 
-  // Ajuste de tamanho do iframe conforme o tamanho da tela
-  if (screenWidth >= 1920) {
+  // Ajuste de tamanho do iframe conforme a altura da tela
+  if (screenHeight >= 1080) {
     iframe.width = "1920";
     iframe.height = "1080";
-  } else if (screenWidth >= 1280) {
+  } else if (screenHeight >= 720) {
     iframe.width = "1280";
     iframe.height = "720";
   } else {
@@ -15,13 +15,15 @@ function adjustIframeSize() {
     iframe.height = "540";
   }
 
-  // Ajuste do console: ele só ficará visível abaixo do iframe se a altura da tela for suficiente
+  // Ajuste do console: ele fica fixo na parte inferior, mas dependendo do tamanho da tela
   let console = document.querySelector('.console');
   if (screenHeight < 720) {
     console.style.position = 'absolute';
-    console.style.bottom = '10px';  // Ajuste da posição do console
+    console.style.bottom = '0';
+    console.style.width = '100%';
   } else {
     console.style.position = 'static';
+    console.style.bottom = 'unset';
   }
 }
 
