@@ -1,6 +1,6 @@
 function adjustIframeSize() {
   let iframe = document.querySelector('iframe');
-
+  
   // Ajuste de tamanho do iframe conforme a altura da janela do navegador
   if (window.innerHeight >= 1080) {
     iframe.width = "1920";
@@ -21,9 +21,11 @@ function adjustIframeSize() {
     console.style.position = 'fixed';
     console.style.bottom = '0';
     console.style.width = '100%';
+    console.style.left = '0';  // Garantir que o console ocupe toda a largura
   } else {
     console.style.position = 'absolute';
     console.style.bottom = 'unset';
+    console.style.left = 'unset';
   }
 }
 
