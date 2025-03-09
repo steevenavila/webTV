@@ -1,13 +1,13 @@
 function adjustIframeSize() {
   let iframe = document.querySelector('iframe');
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
+  const screenWidth = window.innerWidth; // Largura da janela
+  const screenHeight = window.innerHeight; // Altura da janela do navegador
 
   // Ajuste de tamanho do iframe conforme a altura da janela do navegador
-  if (innerHeight >= 1080) {
+  if (screenHeight >= 1080) {
     iframe.width = "1920";
     iframe.height = "1080";
-  } else if (innerHeight >= 720) {
+  } else if (screenHeight >= 720) {
     iframe.width = "1280";
     iframe.height = "720";
   } else {
@@ -15,7 +15,7 @@ function adjustIframeSize() {
     iframe.height = "540";
   }
 
-  // Ajuste do console: ele fica fixo na parte inferior, mas dependendo do tamanho da tela
+  // Ajuste do console: ele flutua quando não há espaço suficiente
   let console = document.querySelector('.console');
   const iframeHeight = iframe.offsetHeight;
 
@@ -29,5 +29,20 @@ function adjustIframeSize() {
   }
 }
 
+let idleTimer;
+function hideConsoleOnIdle() {
+  let console = document.querySelector('.console');
+  clearTimeout(idleTimer);
+  
+  // Mostra o console se o mouse se mover
+  console.style.opacity = '1';
+  
+  idleTimer = setTimeout(function() {
+    console.style.opacity = '0'; // Oculta o console após 3 segundos de inatividade
+  }, 3000); // Ajuste o tempo conforme necessário
+}
+
 window.addEventListener("load", adjustIframeSize);
 window.addEventListener("resize", adjustIframeSize);
+window.addEventListener("mousemove", hideConsoleOnIdle);
+window.addEventListener("scroll", hideConsoleOnIdle);
