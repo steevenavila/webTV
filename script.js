@@ -4,10 +4,10 @@ function adjustIframeSize() {
   const screenHeight = window.innerHeight;
 
   // Ajuste de tamanho do iframe conforme a altura da janela do navegador
-  if (screenHeight >= 1080) {
+  if (innerHeight >= 1080) {
     iframe.width = "1920";
     iframe.height = "1080";
-  } else if (screenHeight >= 720) {
+  } else if (innerHeight >= 720) {
     iframe.width = "1280";
     iframe.height = "720";
   } else {
