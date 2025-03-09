@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <title>webTV</title>
+    <base target="video">
+    <link rel="icon" type="image/x-icon"
+          href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png" >
+    <style type="text/css">
+
+      /* Fundo da página */
+body {
+  background-color: #0d0d0d;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Oculta barras de rolagem */
+  -ms-overflow-style: none;  /* Para Edge e IE */
+  scrollbar-width: none; /* Para Firefox */
+}
+
+/* Oculta barras no Chrome e Safari */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Centraliza o iframe */
+#screen {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Opcional: pode ajudar no alinhamento vertical */
+  margin-top: 20px; /* Mantém uma margem no topo */
+}
+
+/* Ajusta os ícones dos canais */
+img {
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+  object-fit: cover; /* Garante que a imagem sempre se encaixe corretamente */
+}
+
+/* Estiliza o console de canais para flutuar */
+#control {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 12px;
+  transition: opacity 0.3s;
+}
+
+/* Oculta o console e exibe ao passar o mouse */
+#control {
+  opacity: 0;
+}
+
+body:hover #control {
+  opacity: 1;
+}
+
+ 
+    </style>
+    <script>
+      function adjustIframeSize() {
+        let iframe = document.getElementsByName("video")[0];
+        if (window.innerHeight < 768) {  //original 800
+          iframe.width = "960";
+          iframe.height = "540";
+        } else {
+          iframe.width = "1280";
+          iframe.height = "720";
+        } }
+      window.addEventListener("load", adjustIframeSize);
+      window.addEventListener("resize", adjustIframeSize);
+    </script>
+  </head>
+  <body>
+    <p id="screen" align="center">
+      <iframe name="video" src="https://www.youtube.com/embed/videoseries?list=PLGBzpR4f59ZTMQ4SscDH32JrJBLojjPjc&autoplay=1"
+              width="960" height="540" frameborder="0" allowfullscreen scrolling="no" class="frame"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+    </p>
+    <p id="control" align="center">
+      _
+      <a href="https://reidoscanais.eu/embed/?id=recordsp">
+        <img title="record"     src="./icons/record.png"></a>
+      <a href="https://player.logicahost.com.br/player.php?player=1893">
+        <img title="pampa"      src="./icons/pampa.png"></a>
+      <a href="https://www.youtube.com/embed/ABVQXgr2LW4?autoplay=1&mute=1">
+        <img title="sbt"        src="./icons/sbt.png"></a>
+      <a href="https://streaming.procergs.com.br/tve/index5.html">
+        <img title="tve"        src="./icons/tve.png"></a>
+      <a href="https://geo.dailymotion.com/player/x9fev.html?video=k6KRDW5M0jOZO7xaX2y">
+        <img title="band"       src="./icons/band.png"></a>
+      <a href="https://reidoscanais.eu/embed/?id=globors-rbstvportoalegre">
+        <img title="rbs"        src="./icons/rbs.png"></a>
+      _
+      <a href="./playTV.html?canal=5">
+        <img title="tvAL"       src="./icons/altv.png"></a>
+      <a href="https://rtisoluctions.com.br/players/poptv-so.html">
+        <img title="popTV"      src="./icons/poptv.png"></a>
+      <a href="https://beyond.spalla.io/player/?live=28496f6e-83f6-4167-943b-8bdad7991bb5">
+        <img title="cnt"        src="./icons/cnt.png"></a>
+      <a href="https://player.castr.com/live_3815ed7055fe11ef95f9a97142a4bd4f">
+        <img title="masper"     src="./icons/masper.png"></a>
+      _
+      <a href="./brasilsat.html">
+        <img title="brasilsat"  src="./icons/satelite.png"></a>
+      <a href="./youtube.html">
+        <img title="youTube"    src="./icons/youtube_20.png"></a>
+      <a href="./vizer.html">
+        <img title="vizer"      src="./icons/vizer.png"></a>
+      <a href="https://pluto.tv/">
+        <img title="pluto"      src="./icons/pluto.png"></a>
+      <a href="./pico8.html">
+        <img title="pico8"      src="./icons/pico8_20.png"></a>
+      _
+    </p>
+  </body>
+</html>
