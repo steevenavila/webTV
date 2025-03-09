@@ -1,0 +1,76 @@
+/* Estilos gerais */
+body {
+  background-color: #0d0d0d;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+}
+
+/* Centralização do iframe */
+#screen {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+iframe {
+  max-width: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+/* Console */
+.console {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin-top: 16px;
+  width: 100%;
+  max-width: 1280px; /* Limite de largura */
+}
+
+/* Ajuste da largura dos ícones */
+.console img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.console img:hover {
+  transform: scale(1.2);
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 960px) {
+  iframe {
+    width: 100%;
+    height: auto;
+  }
+
+  .console img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1920px) {
+  iframe {
+    width: 1280px;
+    height: 720px;
+  }
+}
+
+@media (min-width: 1920px) {
+  iframe {
+    width: 1920px;
+    height: 1080px;
+  }
+}
