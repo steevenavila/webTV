@@ -41,8 +41,9 @@ iframe {
   margin-top: 16px;
   width: 100%;
   max-width: 1280px; /* Limite de largura */
-  position: absolute;
-  bottom: 0; /* Console vai ficar no fundo da tela */
+  position: fixed; /* Console fixo na parte inferior */
+  bottom: 0;
+  left: 0;
   z-index: 10; /* Garante que o console fique acima do iframe */
 }
 
