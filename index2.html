@@ -1,156 +1,28 @@
-<html>
-  <head>
-    <title>webTV</title>
-    <base target="video">
-    <link rel="icon" type="image/x-icon"
-          href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png" >
-    <style type="text/css">
-/* Fundo da página */
-body {
-  background-color: #0d0d0d;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Oculta barras de rolagem */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webTV</title>
+  <link rel="icon" href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="screen">
+    <iframe name="video" src="https://www.youtube.com/embed/videoseries?list=PLGBzpR4f59ZTMQ4SscDH32JrJBLojjPjc&autoplay=1"
+            width="960" height="540" frameborder="0" allowfullscreen scrolling="no" class="frame"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+  </div>
 
-/* Oculta barras no Chrome e Safari */
-body::-webkit-scrollbar {
-  display: none;
-}
+  <div id="control" class="console">
+    <a href="https://reidoscanais.eu/embed/?id=recordsp"><img title="record" src="./icons/record.png"></a>
+    <a href="https://player.logicahost.com.br/player.php?player=1893"><img title="pampa" src="./icons/pampa.png"></a>
+    <a href="https://www.youtube.com/embed/ABVQXgr2LW4?autoplay=1&mute=1"><img title="sbt" src="./icons/sbt.png"></a>
+    <a href="https://streaming.procergs.com.br/tve/index5.html"><img title="tve" src="./icons/tve.png"></a>
+    <a href="https://geo.dailymotion.com/player/x9fev.html?video=k6KRDW5M0jOZO7xaX2y"><img title="band" src="./icons/band.png"></a>
+    <!-- Adicione outros links conforme necessário -->
+  </div>
 
-/* Centraliza o iframe */
-#screen {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px; /* Mantém uma margem no topo */
-}
-
-/* Ajusta os ícones */
-img {
-  border-radius: 12px;
-  width: 24px;
-  height: 24px;
-  object-fit: cover;
-}
-
-/* Estiliza o console fixo (padrão) */
-#control {
-  text-align: center;
-  margin-top: 10px;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px;
-  border-radius: 12px;
-  transition: opacity 0.3s;
-}
-
-/* Estiliza o console flutuante (quando ativado pelo JS) */
-.floating {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-}
-
-/* Mostra o console quando o mouse está sobre a tela */
-body:hover #control.floating {
-  opacity: 1;
-}
-
-    </style>
-    <script>
-function adjustFrameSize() {
-  let iframe = document.getElementsByName("video")[0];
-  let console = document.getElementById("control");
-  let screenWidth = window.innerWidth;
-  let screenHeight = window.innerHeight;
-
-  // Ajusta o tamanho do iframe com base na tela disponível
-  if (screenWidth >= 1920 && screenHeight >= 1080) {
-    iframe.width = "1920";
-    iframe.height = "1080";
-  } else if (screenWidth >= 1280 && screenHeight >= 800) {
-    iframe.width = "1280";
-    iframe.height = "720";
-  } else {
-    iframe.width = "960";
-    iframe.height = "540";
-  }
-
-  // Ajusta a posição do console
-  adjustConsolePosition(screenWidth, screenHeight);
-}
-
-function adjustConsolePosition(screenWidth, screenHeight) {
-  let console = document.getElementById("control");
-
-  // Quando a tela for pequena, o console vira flutuante
-  if (screenWidth < 1280 || screenHeight < 800) {
-    console.style.position = "fixed";
-    console.style.bottom = "10px";
-    console.style.left = "50%";
-    console.style.transform = "translateX(-50%)";
-    console.style.background = "rgba(0, 0, 0, 0.8)"; // Fundo levemente escuro para contraste
-    console.style.padding = "10px";
-    console.style.borderRadius = "12px";
-  } else {
-    // Quando há espaço suficiente, mantém o console na posição original
-    console.style.position = "static";
-    console.style.background = "transparent";
-    console.style.padding = "0";
-  }
-}
-
-// Aplica ao carregar e ao redimensionar a tela
-window.addEventListener("load", adjustFrameSize);
-window.addEventListener("resize", adjustFrameSize);
-
-
-    </script>
-  </head>
-  <body>
-    <div id="screen" class="screen-container">
-      <iframe name="video" src="https://www.youtube.com/embed/videoseries?list=PLGBzpR4f59ZTMQ4SscDH32JrJBLojjPjc&autoplay=1"
-              width="960" height="540" frameborder="0" allowfullscreen scrolling="no" class="frame"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
-    </p>
-    <div id="control" class="control-container">
-      _
-      <a href="https://reidoscanais.eu/embed/?id=recordsp">
-        <img title="record"     src="./icons/record.png"></a>
-      <a href="https://player.logicahost.com.br/player.php?player=1893">
-        <img title="pampa"      src="./icons/pampa.png"></a>
-      <a href="https://www.youtube.com/embed/ABVQXgr2LW4?autoplay=1&mute=1">
-        <img title="sbt"        src="./icons/sbt.png"></a>
-      <a href="https://streaming.procergs.com.br/tve/index5.html">
-        <img title="tve"        src="./icons/tve.png"></a>
-      <a href="https://geo.dailymotion.com/player/x9fev.html?video=k6KRDW5M0jOZO7xaX2y">
-        <img title="band"       src="./icons/band.png"></a>
-      <a href="https://reidoscanais.eu/embed/?id=globors-rbstvportoalegre">
-        <img title="rbs"        src="./icons/rbs.png"></a>
-      _
-      <a href="./playTV.html?canal=5">
-        <img title="tvAL"       src="./icons/altv.png"></a>
-      <a href="https://rtisoluctions.com.br/players/poptv-so.html">
-        <img title="popTV"      src="./icons/poptv.png"></a>
-      <a href="https://beyond.spalla.io/player/?live=28496f6e-83f6-4167-943b-8bdad7991bb5">
-        <img title="cnt"        src="./icons/cnt.png"></a>
-      <a href="https://player.castr.com/live_3815ed7055fe11ef95f9a97142a4bd4f">
-        <img title="masper"     src="./icons/masper.png"></a>
-      _
-      <a href="./brasilsat.html">
-        <img title="brasilsat"  src="./icons/satelite.png"></a>
-      <a href="./youtube.html">
-        <img title="youTube"    src="./icons/youtube_20.png"></a>
-      <a href="./vizer.html">
-        <img title="vizer"      src="./icons/vizer.png"></a>
-      <a href="https://pluto.tv/">
-        <img title="pluto"      src="./icons/pluto.png"></a>
-      <a href="./pico8.html">
-        <img title="pico8"      src="./icons/pico8_20.png"></a>
-      _
-    </p>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
