@@ -63,9 +63,11 @@ body:hover #control.floating {
     <script>
 function adjustFrameSize() {
   let iframe = document.getElementsByName("video")[0];
+  let console = document.getElementById("control");
   let screenWidth = window.innerWidth;
   let screenHeight = window.innerHeight;
 
+  // Ajusta o tamanho do iframe com base na tela disponível
   if (screenWidth >= 1920 && screenHeight >= 1080) {
     iframe.width = "1920";
     iframe.height = "1080";
@@ -77,25 +79,34 @@ function adjustFrameSize() {
     iframe.height = "540";
   }
 
-  adjustConsolePosition(); // Garante que o console se adapte ao novo tamanho do iframe
+  // Ajusta a posição do console
+  adjustConsolePosition(screenWidth, screenHeight);
 }
 
-  function adjustConsolePosition() {
-  let control = document.getElementById("control");
-  let screenHeight = window.innerHeight;
-  let iframeHeight = document.getElementsByName("video")[0].height;
+function adjustConsolePosition(screenWidth, screenHeight) {
+  let console = document.getElementById("control");
 
-  // Se o iframe ocupar quase toda a tela, o console fica flutuante
-  if (iframeHeight + 80 > screenHeight) {
-    control.classList.add("floating");
+  // Quando a tela for pequena, o console vira flutuante
+  if (screenWidth < 1280 || screenHeight < 800) {
+    console.style.position = "fixed";
+    console.style.bottom = "10px";
+    console.style.left = "50%";
+    console.style.transform = "translateX(-50%)";
+    console.style.background = "rgba(0, 0, 0, 0.8)"; // Fundo levemente escuro para contraste
+    console.style.padding = "10px";
+    console.style.borderRadius = "12px";
   } else {
-    control.classList.remove("floating");
+    // Quando há espaço suficiente, mantém o console na posição original
+    console.style.position = "static";
+    console.style.background = "transparent";
+    console.style.padding = "0";
   }
 }
 
-// Aplica ao carregar e redimensionar a janela
-window.addEventListener("load", adjustConsolePosition);
-window.addEventListener("resize", adjustConsolePosition);
+// Aplica ao carregar e ao redimensionar a tela
+window.addEventListener("load", adjustFrameSize);
+window.addEventListener("resize", adjustFrameSize);
+
 
     </script>
   </head>
