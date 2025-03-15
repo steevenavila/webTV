@@ -131,12 +131,10 @@
         type: 'application/x-mpegURL'
       },
       amazonSat: {
-        src: 'https://amazonsat.brasilstream.com.br/hls/amazonsat/index.m3u8',
-        type: 'application/x-mpegURL'
+        src: 'https://amazonsat.brasilstream.com.br/hls/amazonsat/index.m3u8'
       },
-      paranaEducativa: {
-        src: 'https://aovivo.paranaeducativa.pr.gov.br/hls/tve.m3u8',
-        type: 'application/x-mpegURL'
+      paranaTurismo: {
+        src: 'https://aovivo.paranaeducativa.pr.gov.br/hls/tve.m3u8'
       }
     };
     
@@ -148,7 +146,7 @@
     function changeChannel(canal) {
       var channel = canais[canal];
       if (channel) {
-        player.src({ src: channel.src, type: channel.type });
+        player.src({ src: channel.src, type: 'application/x-mpegURL' });
         player.play();
       } else {
         console.error('Canal não encontrado: ', canal);
