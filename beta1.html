@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webTV</title>
+    
+    <link rel="icon" type="image/x-icon"
+          href="https://icons.iconarchive.com/icons/mattahan/ultrabuuf/32/Things-Television-icon.png">
+    
+    <link href="https://vjs.zencdn.net/7.21.1/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.21.1/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.js"></script>
+    
+    <style type="text/css">
+        body {
+            background-color: #0d0d0d;
+            margin: 0;
+            padding: 0;
+        }
+        #screen {
+            text-align: center;
+        }
+        #control {
+            text-align: center;
+            padding: 10px;
+        }
+        img {
+            border-radius: 12px;
+            width: 24px;
+            height: 24px;
+            margin: 0 5px; /* Adiciona um pequeno espaçamento entre os ícones */
+        }
+        #my-video {
+            width: 100%;
+            max-width: 1280px; /* Define um tamanho máximo para o vídeo */
+            height: auto;
+            display: block; /* Garante que o player se comporte como um bloco */
+            margin: auto; /* Centraliza o player */
+        }
+        /* Estilos para o video-js */
+        .video-js {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <p id="screen" align="center">
+        <video
+            id="my-video"
+            class="video-js vjs-default-skin"
+            controls
+            preload="auto"
+            data-setup='{}'>
+            Seu navegador não suporta a reprodução desse vídeo.
+        </video>
+    </p>
+
+    <p id="control" align="center">
+        <a href="?canal=record" title="record"><img src="./icons/record.png"></a>
+        <a href="?canal=pampa" title="pampa"><img src="./icons/pampa.png"></a>
+        <a href="?canal=sbt" title="sbt"><img src="./icons/sbt.png"></a>
+        <a href="?canal=tve" title="tve"><img src="./icons/tve.png"></a>
+        <a href="?canal=band" title="band"><img src="./icons/band.png"></a>
+        <a href="?canal=rbs" title="rbs"><img src="./icons/rbs.png"></a>
+        _
+        <a href="?canal=altv" title="tvAL"><img src="./icons/altv.png"></a>
+        <a href="?canal=poptv" title="popTV"><img src="./icons/poptv.png"></a>
+        <a href="?canal=cnt" title="cnt"><img src="./icons/cnt.png"></a>
+        <a href="?canal=masper" title="masper"><img src="./icons/masper.png"></a>
+        __
+        <a href="?canal=brasilsat" title="brasilsat"><img src="./icons/satelite.png"></a>
+        <a href="?canal=youtube" title="youTube"><img src="./icons/youtube_20.png"></a>
+        <a href="?canal=fast" title="fast"><img src="./icons/vizer.png"></a>
+        <a href="?canal=pluto" title="pluto"><img src="./icons/pluto.png"></a>
+    </p>
+
+    <script>
+        var player = videojs('my-video');
+
+        var canais = {
+            1: { src: 'https://59f1cbe63db89.streamlock.net:1443/tvpampa/_definst_/tvpampa/playlist.m3u8' },
+            // ... (restante da lista de canais)
+            pampa: { src: 'https://video04.logicahost.com.br/tvpampa/tvpampa/playlist.m3u8' },
+            tve: { src: 'https://streaming.procergs.com.br:8443/tve/stve/playlist.m3u8' },
+            cultura: { src: 'https://player-tvcultura.stream.uol.com.br/live/tvcultura.m3u8' },
+            tvbrasil: { src: 'https://tvbrasil-stream.ebc.com.br/index.m3u8' },
+            altv: { src: 'https://ott01.al.rs.gov.br/meevaor/service3/index.m3u8' },
+            central: { src: 'https://tv01.zas.media:1936/centraltvweb/centraltvweb/playlist.m3u8' },
+            // ... (adicione aqui todos os canais que você quer usar)
+            // Lembre-se de adicionar os novos links que estavam no primeiro arquivo
+            record: { src: 'https://www.playplus.com/live/liveEvent/178', type: 'text/html' },
+            sbt: { src: 'https://www.youtube-nocookie.com/embed/ABVQXgr2LW4?autoplay=1&mute=1&rel=0&showinfo=1', type: 'text/html' },
+            band: { src: 'https://geo.dailymotion.com/player/x9fev.html?video=k6KRDW5M0jOZO7xaX2y', type: 'text/html' }
+        };
+
+        function getCanalFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('canal');
+        }
+
+        function changeChannel(canal) {
+            var channel = canais[canal];
+            if (channel) {
+                // Aqui é onde a mudança de canal acontece
+                // Para os links que não são m3u8, você pode precisar de um tratamento especial,
+                // como recarregar a página ou usar um iframe.
+                // A abordagem mais simples é usar links diretos ou iframes como no original
+                // se os players não puderem ser incorporados no video-js.
+                if (channel.type === 'text/html') {
+                    // Crie um iframe para links externos que não são m3u8
+                    const iframe = document.createElement('iframe');
+                    iframe.src = channel.src;
+                    iframe.width = '100%';
+                    iframe.height = '100%';
+                    iframe.frameborder = '0';
+                    iframe.allowfullscreen = true;
+                    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+
+                    // Substitui o player video-js pelo iframe
+                    const screen = document.getElementById('screen');
+                    screen.innerHTML = '';
+                    screen.appendChild(iframe);
+                } else {
+                    // Para os canais m3u8, usa o player video-js
+                    player.src({ src: channel.src, type: 'application/x-mpegURL' });
+                    player.play();
+                }
+            } else {
+                console.error('Canal não encontrado: ', canal);
+            }
+        }
+
+        var canalInicial = getCanalFromUrl();
+        if (canalInicial) {
+            changeChannel(canalInicial);
+        } else {
+            // Se nenhum canal for especificado, você pode definir um padrão
+            // Por exemplo, tocar o primeiro canal da lista
+            changeChannel('pampa');
+        }
+
+        // Lógica de redimensionamento do iframe não é mais necessária com a abordagem de CSS
+    </script>
+</body>
+</html>
